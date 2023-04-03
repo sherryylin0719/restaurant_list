@@ -2,86 +2,35 @@
 
 此專案提供使用者藉由餐廳名稱及餐廳類別查詢餐廳的資訊，例如:餐廳類別、地址、評分、描述等等
 
-## Getting Started
+## 功能列表
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+依照餐廳名稱及餐廳類別搜尋
+點擊餐廳圖卡檢視餐廳詳細資訊包含類別、地址、電話、評分及圖片
 
-### Prerequisites
+### 環境建置
+Node.js v14.16.0
 
-What things you need to install the software and how to install them
+### 安裝
+1.開啟終端機(Terminal)cd 到存放專案本機位置並執行:
+https://github.com/sherryylin0719/restaurant_list.git
 
-```
-Give examples
-```
+2.初始
+cd restaurant_list //切至專案資料夾
+npm install //安裝套件
 
-### Installing
+3.開啟程式
+npm run dev
 
-A step by step series of examples that tell you how to get a development env running
+終端顯示 Express is listening on localhost:3000! 即啟動完成，請至http://localhost:3000開始使用程式
 
-Say what the step will be
 
-```
-Give the example
-```
+## 使用工具
 
-And repeat
+Visual Studio Code - 開發環境
+Express - 應用程式架構
+Express-Handlebars - 模板引擎
+Bootstrap - 前端框架
 
-```
-until finished
-```
+## 致謝
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* ![Eason](https://github.com/Eason0in/Restaurant-CRUD)
