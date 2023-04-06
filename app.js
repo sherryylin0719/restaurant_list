@@ -2,7 +2,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 const exphbs = require("express-handlebars")
-const restaurantList = require("./restaurant.json")
+const Restaurant = require("./models/restaurant.js")
 
 //use dotenv only when under non-production environment
 if (process.env.NODE_ENV !== "production") {
@@ -32,12 +32,12 @@ app.use(express.static("public"))
 
 // routes setting
 app.get("/", (req, res) => {
-  res.render("index", { restaurants: restaurantList.results })
+  res.render("index", { restaurants: Restaurant })
 })
 
 app.get("/search", (req, res) => {
   const keyword = req.query.keyword
-  const restaurants = restaurantList.results.filter(restaurant => {
+  const restaurants = Restaurant.filter(restaurant => {
     return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
   })
   res.render("index", { restaurants: restaurants, keyword: keyword })
