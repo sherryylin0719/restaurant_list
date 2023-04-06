@@ -54,10 +54,13 @@ app.post("/restaurants", (req, res) => {
 
 app.get("/search", (req, res) => {
   const keyword = req.query.keyword
-  const restaurants = Restaurant.filter(restaurant => {
-    return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
-  })
-  res.render("index", { restaurants: restaurants, keyword: keyword })
+  return Restaurant.find().lean()
+    .then(restaurants => {
+      const filteredRestaurants = restaurants.filter(restaurant => {
+        return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
+      })
+      res.render("index", { restaurants: filteredRestaurants, keyword: keyword })
+    })
 })
 
 app.get("/restaurants/:id", (req, res) => {
