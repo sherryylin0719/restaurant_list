@@ -1,11 +1,28 @@
 // require packages used in the project
 const express = require("express")
-const app = express()
-const port = 3000
-
-// require packages used in the project
+const mongoose = require("mongoose")
 const exphbs = require("express-handlebars")
 const restaurantList = require("./restaurant.json")
+
+//use dotenv only when under non-production environment
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config()
+}
+
+const app = express()
+
+//connect to mongoose
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+
+//connection status
+const db = mongoose.connection
+db.on("error", () => {
+  console.log("mongodb error!")
+})
+db.once("open", () => {
+  console.log("mongodb connected!")
+})
+
 // setting template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
@@ -32,6 +49,6 @@ app.get("/restaurants/:restaurant_id", (req, res) => {
 })
 
 // start and listen on the Express server
-app.listen(port, () => {
-  console.log(`Express is listening on localhost:${port}`)
+app.listen(3000, () => {
+  console.log(`Express is listening on localhost:3000`)
 })
