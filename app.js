@@ -46,8 +46,8 @@ app.get("/restaurants/new", (req, res) => {
 })
 
 app.post("/restaurants", (req, res) => {
-  const { name, category, location, phone, description, image } = req.body
-  return Restaurant.create({ name, category, location, phone, description, image })
+  const { name, category, location, phone, description, image, rating } = req.body
+  return Restaurant.create({ name, category, location, phone, description, image, rating })
     .then(() => res.redirect("/"))
     .catch(error => console.log(error))
 })

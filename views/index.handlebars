@@ -16,13 +16,13 @@
     </div>
   </div>
 </div>
-<a href="./restaurants/new">Create</a>
+<a class="btn btn-warning mx-5" href="./restaurants/new">Create New Restaurant</a>
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto d-flex flex-wrap justify-content-center align-items-center">
       {{#each restaurants}}
-      <div class="row cols-sm-3 m-1">
+      <div class="row cols-sm-3 m-2">
         <a href="/restaurants/{{this._id}}" class="text-secondary ">
           <div class="card mb-3">
             <img class="card-img-top" src="{{this.image}}" alt="餐廳照片">
@@ -38,10 +38,10 @@
             </div>
           </div>
         </a>
-        <div class="footer">
-          <a href="/restaurants/{{this._id}}/edit">Edit</a>
-          <a href="/restaurants/{{this._id}}">Detail</a>
-          <form action="/restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
+        <div class="footer d-flex justify-content-end">
+          <a class="m-1" href="/restaurants/{{this._id}}/edit">Edit</a>
+          <a class="m-1" href="/restaurants/{{this._id}}">Detail</a>
+          <form class="m-1" action="/restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
             <button type="submit">Delete</button>
           </form>
         </div>

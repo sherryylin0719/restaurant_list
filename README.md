@@ -8,10 +8,28 @@
 
 點擊餐廳圖卡檢視餐廳詳細資訊包含類別、地址、電話、評分及圖片
 
+使用者可以新增一家餐廳
+
+使用者可以瀏覽一家餐廳的詳細資訊
+
+使用者可以瀏覽全部所有餐廳
+
+使用者可以修改一家餐廳的資訊
+
+使用者可以刪除一家餐廳
+
 ### 環境建置
+
 Node.js v14.16.0
 
+MongoDB 
+
+Mongoose: v5.9.7
+
+Express": v4.17.1
+
 ### 安裝
+
 1.開啟終端機(Terminal)cd 到存放專案本機位置並執行:
 
 https://github.com/sherryylin0719/restaurant_list.git
@@ -23,6 +41,9 @@ cd restaurant_list //切至專案資料夾
 npm install //安裝套件
 
 3.開啟程式
+
+npm run seed
+
 npm run dev
 
 終端顯示 Express is listening on localhost:3000! 即啟動完成，請至 http://localhost:3000 開始使用程式
@@ -37,6 +58,10 @@ Express - 應用程式架構
 Express-Handlebars - 模板引擎
 
 Bootstrap - 前端框架
+
+MongoDB
+
+Mongoose
 
 ## 致謝
 
