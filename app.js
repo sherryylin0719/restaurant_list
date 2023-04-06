@@ -3,6 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const exphbs = require("express-handlebars")
 const Restaurant = require("./models/restaurant")
+const bodyParser = require('body-parser')
 
 //use dotenv only when under non-production environment
 if (process.env.NODE_ENV !== "production") {
@@ -26,6 +27,8 @@ db.once("open", () => {
 // setting template engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
+
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // setting static files
 app.use(express.static("public"))
@@ -51,6 +54,37 @@ app.get("/restaurants/:id", (req, res) => {
   return Restaurant.findById(id)
     .lean()
     .then(restaurant => res.render("show", { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then(restaurant => res.render("edit", { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.post("/restaurants/:id/edit", (req, res) => {
+  const id = req.params.id
+  const name = req.body.name
+  const category = req.body.category
+  const location = req.body.location
+  const phone = req.body.phone
+  const description = req.body.description
+  const image = req.body.image
+
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = name
+      restaurant.category = category
+      restaurant.location = location
+      restaurant.phone = phone
+      restaurant.description = description
+      restaurant.image = image
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
 
