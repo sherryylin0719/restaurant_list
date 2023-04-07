@@ -41,6 +41,38 @@ app.get("/", (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.get("/ascend", (req, res) => {
+  Restaurant.find()
+    .lean()
+    .sort({ name: "asc" })
+    .then(restaurants => res.render("index", { restaurants }))
+    .catch(error => console.log(error))
+})
+
+app.get("/descend", (req, res) => {
+  Restaurant.find()
+    .lean()
+    .sort({ name: "desc" })
+    .then(restaurants => res.render("index", { restaurants }))
+    .catch(error => console.log(error))
+})
+
+app.get("/sortByLocation", (req, res) => {
+  Restaurant.find()
+    .lean()
+    .sort({ location: "asc" })
+    .then(restaurants => res.render("index", { restaurants }))
+    .catch(error => console.log(error))
+})
+
+app.get("/sortByCategory", (req, res) => {
+  Restaurant.find()
+    .lean()
+    .sort({ category: "asc" })
+    .then(restaurants => res.render("index", { restaurants }))
+    .catch(error => console.log(error))
+})
+
 app.get("/restaurants/new", (req, res) => {
   return res.render("new")
 })
@@ -81,12 +113,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 
 app.post("/restaurants/:id/edit", (req, res) => {
   const id = req.params.id
-  const name = req.body.name
-  const category = req.body.category
-  const location = req.body.location
-  const phone = req.body.phone
-  const description = req.body.description
-  const image = req.body.image
+  const { name, category, location, phone, description, image } = req.body
 
   return Restaurant.findById(id)
     .then(restaurant => {
