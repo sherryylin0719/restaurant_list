@@ -53,7 +53,7 @@
         <div class="footer d-flex justify-content-end">
           <a class="m-1" href="/restaurants/{{this._id}}/edit">Edit</a>
           <a class="m-1" href="/restaurants/{{this._id}}">Detail</a>
-          <form class="m-1" action="/restaurants/{{ this._id }}/delete" method="POST" style="display: inline;">
+          <form class="m-1" action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
             <button type="submit">Delete</button>
           </form>
         </div>

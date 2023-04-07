@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const exphbs = require("express-handlebars")
 const Restaurant = require("./models/restaurant")
 const bodyParser = require('body-parser')
+const methodOverride = require("method-override")
 
 //use dotenv only when under non-production environment
 if (process.env.NODE_ENV !== "production") {
@@ -29,6 +30,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }))
 app.set("view engine", "handlebars")
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride("_method"))
 
 // setting static files
 app.use(express.static("public"))
@@ -111,7 +113,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post("/restaurants/:id/edit", (req, res) => {
+app.put("/restaurants/:id", (req, res) => {
   const id = req.params.id
   const { name, category, location, phone, description, image } = req.body
 
@@ -129,7 +131,7 @@ app.post("/restaurants/:id/edit", (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post("/restaurants/:id/delete", (req, res) => {
+app.delete("/restaurants/:id", (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
