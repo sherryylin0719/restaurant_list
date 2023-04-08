@@ -40,9 +40,13 @@ cd restaurant_list //切至專案資料夾
 
 npm install //安裝套件
 
-3.開啟程式
+3.產生預設使用者及餐廳資料至 MongoDB
 
-npm run seed
+npm run seed //終端顯示 done 即完成新增資料
+
+Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
+
+4.開啟程式
 
 npm run dev
 
