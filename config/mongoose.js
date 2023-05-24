@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 //connect to mongoose
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
 //connection status
 const db = mongoose.connection
