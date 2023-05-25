@@ -8,6 +8,9 @@ const methodOverride = require("method-override")
 const flash = require('connect-flash') 
 const routes = require("./routes")
 require("./config/mongoose")
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 const app = express()
 
@@ -15,7 +18,7 @@ const app = express()
 app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }))
 app.set("view engine", "hbs")
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
@@ -38,6 +41,6 @@ app.use(express.static("public"))
 app.use(routes)
 
 // start and listen on the Express server
-app.listen(3000, () => {
-  console.log(`Express is listening on localhost:3000`)
+app.listen(process.env.PORT, () => {
+  console.log(`Express is listening on localhost:${process.env.PORT}`)
 })
