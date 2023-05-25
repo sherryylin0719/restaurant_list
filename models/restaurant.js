@@ -41,7 +41,7 @@ const restaurantSchema = new Schema({
     type: String,
     required: true,
   },
-   userId: {  // 加入關聯設定
+  userId: {  // 加入關聯設定
     type: Schema.Types.ObjectId,
     ref: 'User',
     index: true,
