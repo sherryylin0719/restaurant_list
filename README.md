@@ -1,6 +1,6 @@
-# 我的餐廳清單1.0
+# 我的餐廳清單
 
-此專案提供使用者藉由餐廳名稱及餐廳類別查詢餐廳的資訊，例如:餐廳類別、地址、評分、描述等等
+此專案提供使用者註冊自己的帳號，並藉由餐廳名稱及餐廳類別查詢餐廳的資訊，例如:餐廳類別、地址、評分、描述等等
 
 ## 功能列表
 
@@ -12,17 +12,19 @@
 
 使用者可以瀏覽一家餐廳的詳細資訊
 
-使用者可以瀏覽全部所有餐廳
+使用者可以瀏覽自己的餐廳
 
 使用者可以修改一家餐廳的資訊
 
 使用者可以刪除一家餐廳
 
+使用者可以註冊自己的帳號，或用 Facebook 登入
+
 ### 環境建置
 
 Node.js v14.16.0
 
-MongoDB 
+MongoDB
 
 Mongoose: v5.9.7
 
@@ -32,6 +34,7 @@ Express": v4.17.1
 
 1.開啟終端機(Terminal)cd 到存放專案本機位置並執行:
 
+git clone
 https://github.com/sherryylin0719/restaurant_list.git
 
 2.初始
@@ -42,16 +45,13 @@ npm install //安裝套件
 
 3.產生預設使用者及餐廳資料至 MongoDB
 
-npm run seed //終端顯示 done 即完成新增資料
-
-Ctrl+C *2  //連按兩下Ctrl+C結束批次工作
+npm run seed //終端顯示 '所有使用者與餐廳資料創建完成' 即完成新增資料
 
 4.開啟程式
 
 npm run dev
 
 終端顯示 Express is listening on localhost:3000! 即啟動完成，請至 http://localhost:3000 開始使用程式
-
 
 ## 使用工具
 

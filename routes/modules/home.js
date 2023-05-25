@@ -12,8 +12,9 @@ router.get("/", (req, res) => {
 })
 
 router.get("/search", (req, res) => {
+  const userId = req.user._id
   const keyword = req.query.keyword
-  return Restaurant.find().lean()
+  return Restaurant.find({userId}).lean()
     .then(restaurants => {
       const filteredRestaurants = restaurants.filter(restaurant => {
         return restaurant.name.toLowerCase().includes(keyword.toLowerCase()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase())
@@ -23,7 +24,8 @@ router.get("/search", (req, res) => {
 })
 
 router.get("/ascend", (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({userId})
     .lean()
     .sort({ name: "asc" })
     .then(restaurants => res.render("index", { restaurants }))
@@ -31,7 +33,8 @@ router.get("/ascend", (req, res) => {
 })
 
 router.get("/descend", (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({userId})
     .lean()
     .sort({ name: "desc" })
     .then(restaurants => res.render("index", { restaurants }))
@@ -39,7 +42,8 @@ router.get("/descend", (req, res) => {
 })
 
 router.get("/sortByLocation", (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({userId})
     .lean()
     .sort({ location: "asc" })
     .then(restaurants => res.render("index", { restaurants }))
@@ -47,7 +51,8 @@ router.get("/sortByLocation", (req, res) => {
 })
 
 router.get("/sortByCategory", (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id
+  Restaurant.find({userId})
     .lean()
     .sort({ category: "asc" })
     .then(restaurants => res.render("index", { restaurants }))
